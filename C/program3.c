@@ -20,4 +20,6 @@ int main()
     fAns = calculateArea(radius);
 
     printf("Area of the circle is :: %.2f \n", fAns);
+
+    return 0;
 }
