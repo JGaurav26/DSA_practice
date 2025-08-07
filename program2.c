@@ -1,18 +1,39 @@
+// SINGLY LINEAR LINKED LIST
+
 #include<stdio.h>
 #include<stdlib.h>
 
-struct node 
+struct node
 {
     int data;
     struct node * next;
 };
 
-typedef struct node NODE;
-typedef struct node * PNODE;
-struct node ** PPNODE;
+typedef struct node NODE, *PNODE, **PPNODE;
+
+void InsertFirst(PPNODE Head, int iNo)
+{
+    PNODE newn = NULL;
+    newn = (PNODE)malloc(sizeof(NODE));
+
+    newn->data = iNo;
+    newn->next = NULL;
+
+    if(*Head == NULL)
+    {
+        newn = *Head;
+    } else {
+        newn->next = *Head;
+        *Head = newn;
+    }
+}
 
 int main()
 {
-    struct node * First = NULL;
+    PNODE First = NULL;
+    InsertFirst(&First, 30);
+    InsertFirst(&First, 20);
+    InsertFirst(&First, 10);
+
     return 0;
 }

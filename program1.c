@@ -1,15 +1,19 @@
+// SINGLY LINEAR LINKED LIST
+
 #include<stdio.h>
 #include<stdlib.h>
 
-// structure declaration
 struct node
 {
     int data;
-    struct node *next;
+    struct node * next;
 };
+
+typedef struct node NODE, *PNODE, **PPNODE;
+
 
 int main()
 {
-    struct node *First = NULL;
+
     return 0;
 }
