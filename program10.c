@@ -1,3 +1,5 @@
+// DOUBLY LINEAR LINKED LIST
+
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -5,61 +7,25 @@ struct node
 {
     int data;
     struct node * next;
+    struct node * prev;
 };
 
-typedef struct node NODE;
-typedef struct node * PNODE;
-typedef struct node ** PPNODE;
+typedef struct node NODE, *PNODE, **PPNODE;
 
-void InsertFirst(PPNODE Head, int iNo)
-{
-     // STEP 1 :: allocate memory dynamically for the node
-    struct node * newn = NULL;
-    newn = (struct node *)malloc(sizeof(struct node));
+void InsertFirst(PPNODE Head, int iNo){}
+void InsertLast(PPNODE Head, int iNo){}
+void InsertAtLoc(PPNODE Head, int iNo, int iLoc){}
 
-    // STEP 2 :: initialize the node
-    newn->data = iNo;
-    newn->next = NULL; // only one node is present hence the next part of the node will contain null value
+void DeleteFirst(PPNODE Head){}
+void DeleteLast(PPNODE Head){}
+void DeleteAtLoc(PPNODE Head,int iLoc){}
 
-    // STEP 3 :: check whether LL is empty or not
-    if(*Head == NULL) // LL is empty
-    {
-        *Head = newn;
-    } else { // if LL has more than one element
-        newn->next = *Head;
-        *Head = newn;
-    }
-}
+void display(PNODE Head){}
+int count (PNODE Head){return 0;}
 
-void Display(PNODE Head)
-{
-    printf("LINKED LIST ELEMENTS :: \n");
-    while(Head != NULL)
-    {
-        printf("| %d | \n", Head->data);
-        Head = Head->next;
-    }
-}
-
-int Count(PNODE Head)
-{
-    int iCnt = 0;
-    while(Head != NULL)
-    {
-        Head = Head->next;
-        iCnt++;
-    }
-    return iCnt;
-}
 
 int main()
 {
     PNODE First = NULL;
-    InsertFirst(&First, 10);
-    InsertFirst(&First, 20);
-    Display(First);
-
-    int iRet = Count(First);
-    printf("Total number of elements in the LINKED LIST  are :: %d \n", iRet);
     return 0;
 }

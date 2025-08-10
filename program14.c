@@ -23,6 +23,7 @@ void InsertFirst(PPNODE Head, int iNo)
 
     if(*Head == NULL) {
         *Head = newn;
+        return;
     } else {
         (*Head)->prev = newn;
         newn->next = *Head;
@@ -37,8 +38,26 @@ void DeleteFirst(PPNODE Head){}
 void DeleteLast(PPNODE Head){}
 void DeleteAtLoc(PPNODE Head,int iLoc){}
 
-void display(PNODE Head){}
-int count (PNODE Head){return 0;}
+void display(PNODE Head)
+{
+    printf("The elemetns in the linked list are :: \n");
+    printf("NULL <=> ");
+    while(Head != NULL) {
+        printf("| %d | <=> ", Head->data);
+        Head = Head->next;
+    }
+    printf("NULL \n");
+}
+
+int count (PNODE Head)
+{
+    int iCnt = 0;
+    while(Head != NULL) {
+        iCnt++;
+        Head = Head->next;
+    }
+    return iCnt;
+}
 
 
 int main()
@@ -47,5 +66,8 @@ int main()
     InsertFirst(&First, 30);
     InsertFirst(&First, 20);
     InsertFirst(&First, 10);
+    display(First);
+    int iRet = count(First);
+    printf("Total nodes in the Linked List are = %d \n", iRet);
     return 0;
 }
