@@ -55,7 +55,11 @@ void InsertLast(PPNODE Head, int iNo)
 }
 void InsertAtLoc(PPNODE Head, int iNo, int iLoc){}
 
-void DeleteFirst(PPNODE Head){}
+void DeleteFirst(PPNODE Head)
+{
+
+}
+
 void DeleteLast(PPNODE Head){}
 void DeleteAtLoc(PPNODE Head,int iLoc){}
 
