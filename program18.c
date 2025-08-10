@@ -82,8 +82,6 @@ void DeleteLast(PPNODE Head)
     }
 }
 
-void DeleteAtLoc(PPNODE Head,int iLoc){}
-
 void display(PNODE Head)
 {
     printf("The elemetns in the linked list are :: \n");
@@ -136,6 +134,31 @@ void InsertAtLoc(PPNODE Head, int iNo, int iLoc)
     }
 }
 
+void DeleteAtLoc(PPNODE Head,int iLoc)
+{
+    PNODE temp = *Head;
+    int iSize = count(*Head);
+    int i = 0;
+    if(iLoc<1 || iLoc>(iSize+1)) {
+        printf("Invalid...\n");
+        return;
+    }
+
+    if(iLoc == 1){
+        DeleteFirst(Head);
+    } else if(iLoc == iSize+1) {
+        DeleteLast(Head);
+    } else {
+        for(i=1; i<iLoc-1; i++)
+        {
+            temp = temp->next;
+        }
+        temp->next = temp->next->next;
+        free(temp->next->prev);
+        temp->next->prev = temp;
+    }
+
+}
 
 int main()
 {
@@ -162,6 +185,11 @@ int main()
     InsertAtLoc(&First, 50, 4);
     InsertAtLoc(&First, 10, 1);
     InsertAtLoc(&First, 25, 3);
+    iRet = count(First);
+    display(First);
+    printf("Total nodes in the Linked List are = %d \n", iRet);
+
+    DeleteAtLoc(&First, 3);
     iRet = count(First);
     display(First);
     printf("Total nodes in the Linked List are = %d \n", iRet);
