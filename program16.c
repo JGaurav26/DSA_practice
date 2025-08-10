@@ -67,7 +67,22 @@ void DeleteFirst(PPNODE Head)
     }
 }
 
-void DeleteLast(PPNODE Head){}
+void DeleteLast(PPNODE Head)
+{
+    PNODE temp = *Head;
+    if(*Head == NULL) {
+        printf("Invalid...\n");
+        return;
+    } else {
+        while(temp->next->next != NULL) 
+        {
+            temp = temp->next;
+        }
+        free(temp->next);
+        temp->next = NULL;
+    }
+}
+
 void DeleteAtLoc(PPNODE Head,int iLoc){}
 
 void display(PNODE Head)
@@ -109,6 +124,7 @@ int main()
     printf("Total nodes in the Linked List are = %d \n", iRet);
 
     DeleteFirst(&First);
+    DeleteLast(&First);
     iRet = count(First);
     display(First);
     printf("Total nodes in the Linked List are = %d \n", iRet);
