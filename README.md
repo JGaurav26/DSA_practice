@@ -1,2 +1,5 @@
-# DPPs
-This repository consists of problem statements solved on daily basis
+# DSA_practice
+All the basic programs for ::
+1. Singly Linear Linked List
+2. Doubly Linear Linked List
+3. Circular Linear Linked List
