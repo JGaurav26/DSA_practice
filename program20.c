@@ -11,7 +11,25 @@ struct node
 
 typedef struct node NODE, *PNODE, **PPNODE;
 
-void InsertFirst(PPNODE Head, PPNODE Tail, int iNo){}
+void InsertFirst(PPNODE Head, PPNODE Tail, int iNo)
+{
+    PNODE newn = NULL;
+    newn = (PNODE)malloc(sizeof(NODE));
+
+    newn->data = iNo;
+    newn->next = NULL;
+
+    if(*Head == NULL) {
+        *Head = newn;
+        *Tail = newn;
+        (*Tail)->next = *Head;
+    } else {
+        *Head = newn;
+        newn->next = *Tail;
+        (*Tail)->next = *Head;
+    }
+}
+
 void InsertLast(PPNODE Head, PPNODE Tail, int iNo){}
 void InsertAtLoc(PPNODE Head, PPNODE Tail, int iNo, int iLoc){}
 
@@ -27,5 +45,9 @@ int main()
 {
     PNODE First = NULL;
     PNODE Last = NULL;
+
+    InsertFirst(&First, &Last, 30);
+    InsertFirst(&First, &Last, 20);
+    InsertFirst(&First, &Last, 10);
     return 0;
 }
