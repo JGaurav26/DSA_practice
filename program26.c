@@ -74,17 +74,13 @@ void DeleteLast(PPNODE Head, PPNODE Tail)
     {
         printf("Invalid...");
         return;
-    } else if((*Head)->next == NULL){
-        free(*Head);
-        *Head = NULL;
-        *Tail = NULL;
     } else{
-        while(temp->next!= NULL)
+        while(temp->next != *Tail)
         {
             temp = temp->next;
         }
-        free(temp);
-        temp = *Head;
+        free(*Tail);
+        *Tail = temp;
         (*Tail)->next = *Head;
     }
 }

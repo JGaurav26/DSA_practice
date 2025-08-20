@@ -74,17 +74,13 @@ void DeleteLast(PPNODE Head, PPNODE Tail)
     {
         printf("Invalid...");
         return;
-    } else if((*Head)->next == *Tail){
-        free(*Head);
-        *Head = NULL;
-        *Tail = NULL;
     } else{
-        while(temp->next!= *Tail)
+        while(temp->next != *Tail)
         {
             temp = temp->next;
         }
-        free(temp);
-        temp = *Head;
+        free(*Tail);
+        *Tail = temp;
         (*Tail)->next = *Head;
     }
 }
@@ -157,18 +153,17 @@ void DeleteAtLoc(PPNODE Head, PPNODE Tail, int iLoc)
     int iSize = count(*Head, *Tail);
     PNODE temp = *Head;
     if(*Head == NULL){
-        free(*Head);
-        *Head = NULL;
-        *Tail = NULL;
+        printf("Invalid...\n");
+        return;
     }
 
-    if(iLoc<1){
+    if(iLoc==1){
         DeleteFirst(Head, Tail);
         return;
-    } else if(iLoc>(iSize+1)){
+    } else if(iLoc==(iSize+1)){
         DeleteLast(Head, Tail);
     } else{
-        for(int i = 0; i<(iLoc-1); i++)
+        for(int i = 1; i<iLoc-1; i++)
         {
             temp = temp->next;
         }
