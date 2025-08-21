@@ -7,7 +7,6 @@ typedef struct node{
     int data;
     struct node * next;
     struct node *prev;
-
 } NODE, *PNODE, **PPNODE;
 
 void InsertFirst(PPNODE Head, PPNODE Tail, int iNo)
@@ -15,15 +14,14 @@ void InsertFirst(PPNODE Head, PPNODE Tail, int iNo)
     PNODE newn = NULL;
     newn = (PNODE)malloc(sizeof(NODE));
 
+    newn->data = iNo;
     newn->next = NULL;
     newn->prev = NULL;
-    newn->data = iNo;
 
     if(*Head == NULL && *Tail == NULL){
         *Head = newn;
-        (*Tail)->next = *Head;
+        (*Tail)->next = newn;
     } else{
-        newn = *Head;
         
     }
 }
