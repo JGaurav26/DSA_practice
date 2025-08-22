@@ -60,7 +60,16 @@ void Display(PNODE Head, PNODE Tail)
 
 int Count(PNODE Head, PNODE Tail)
 {
-    return 0;
+    int iCnt = 0;
+    if((Head!=NULL) && (Tail!=NULL))
+    {
+        do
+        {
+            iCnt++;
+            Head = Head->next;
+        } while(Head != Tail->next);
+    }
+    return iCnt;
 }
 
 int main()
@@ -72,6 +81,8 @@ int main()
     InsertFirst(&First, &Last, 20);
     InsertFirst(&First, &Last, 10);
     Display(First, Last);
+    int iRet = Count(First, Last);
+    printf("Total number of elements in the Linked List are :: %d \n", iRet);
 
     return 0;
 }
