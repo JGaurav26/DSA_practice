@@ -24,10 +24,10 @@ void InsertFirst(PPNODE Head, PPNODE Tail, int iNo)
         (*Head)->next = *Head;
         (*Head)->prev = *Tail;
     } else{
-        newn->next = *Head;       // new node → old head
-        newn->prev = *Tail;       // new node → old tail
-        (*Head)->prev = newn;     // old head ← new node
-        (*Tail)->next = newn;     // old tail → new node
+        newn->next = *Head;       
+        newn->prev = *Tail;       
+        (*Head)->prev = newn;     
+        (*Tail)->next = newn;    
         *Head = newn;
     }
 }
