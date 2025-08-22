@@ -22,7 +22,9 @@ void InsertFirst(PPNODE Head, PPNODE Tail, int iNo)
         *Head = newn;
         (*Tail)->next = newn;
     } else{
-        
+        (*Head)->next = newn->next;
+        *Head = newn;
+        (*Tail)->next = *Head;
     }
 }
 
