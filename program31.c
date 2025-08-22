@@ -27,12 +27,33 @@ void InsertFirst(PPNODE Head, PPNODE Tail, int iNo)
         newn->next = *Head;       
         newn->prev = *Tail;       
         (*Head)->prev = newn;     
-        (*Tail)->next = newn;     
+        (*Tail)->next = newn;    
         *Head = newn;
     }
 }
 
-void InsertLast(PPNODE Head, PPNODE Tail, int iNo){}
+void InsertLast(PPNODE Head, PPNODE Tail, int iNo)
+{
+    PNODE newn = NULL;
+    newn = (PNODE)malloc(sizeof(NODE));
+
+    newn->data = iNo;
+    newn->next = NULL;
+    newn->prev = NULL;
+
+    if(*Head == NULL && *Tail == NULL){
+        *Head = newn;
+        (*Tail) = newn;
+        (*Head)->next = *Head;
+        (*Head)->prev = *Tail;
+    } else{
+        newn->prev = *Tail;
+        newn->next = *Head;
+        (*Tail)->next = newn;
+        (*Head)->prev = newn;
+        *Tail = newn;
+    }
+}
 
 void InsertAtLoc(PPNODE Head, PPNODE Tail, int iNo, int iLoc){}
 
@@ -60,7 +81,16 @@ void Display(PNODE Head, PNODE Tail)
 
 int Count(PNODE Head, PNODE Tail)
 {
-    return 0;
+    int iCnt = 0;
+    if((Head!=NULL) && (Tail!=NULL))
+    {
+        do
+        {
+            iCnt++;
+            Head = Head->next;
+        } while(Head != Tail->next);
+    }
+    return iCnt;
 }
 
 int main()
@@ -72,6 +102,13 @@ int main()
     InsertFirst(&First, &Last, 20);
     InsertFirst(&First, &Last, 10);
     Display(First, Last);
+    int iRet = Count(First, Last);
+    printf("Total number of elements in the Linked List are :: %d \n", iRet);
+
+    InsertLast(&First, &Last, 40);
+    Display(First, Last);
+    iRet = Count(First, Last);
+    printf("Total number of elements in the Linked List are :: %d \n", iRet);
 
     return 0;
 }
